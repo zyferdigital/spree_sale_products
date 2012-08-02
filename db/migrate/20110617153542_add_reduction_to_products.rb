@@ -1,9 +1,6 @@
 class AddReductionToProducts < ActiveRecord::Migration
-  def self.up
-    add_column :products, :reduction_percentage, :integer
-  end
-
-  def self.down
-    remove_column :products, :reduction_percentage
+  def change
+    # specifications for the sale price column copied from spree migration for spree_variants.price
+    add_column :spree_variants, :sale_price, :decimal, precision: 8, scale: 2, null: false
   end
 end

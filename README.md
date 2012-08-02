@@ -1,17 +1,16 @@
-Summary
+Spree Sale Products
 =======
 
-Provides a per product reduced price option calculated by percentage off. Price are rounded down e.g 50% off 15.99 = 7.99. Very early stages of dev and not tested yet.
+Provides a per variant reduced price option. Logic works similiar to [spree_volume_pricing](https://github.com/spree/spree_volume_pricing).
 
 Installation
 ------------
   
-    gem "spree_sale_products", :git => 'git://github.com/sebastyuiop/spree_sale_products.git'
-    
-    bundle install
+    bundle exec rails g spree_sale_products:install
 
-    rake spree_sale_products:install
-    
-    rake db:migrate
+Authors
+-------
+* @sebastyuiop
+* @iloveitaly
 
 Copyright (c) 2011 sebastyuiop, released under the New BSD License

@@ -1,4 +1,4 @@
-Order.class_eval do
+Spree::Order.class_eval do
   def add_variant(variant, quantity = 1)
     current_item = contains?(variant)
     if current_item

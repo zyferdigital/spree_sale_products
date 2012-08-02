@@ -1,4 +1,4 @@
-ProductsHelper.class_eval do
+Spree::ProductsHelper.class_eval do
   def product_price(product_or_variant, options={})
     options.assert_valid_keys(:format_as_currency, :show_vat_text, :show_calculated_price)
     options.reverse_merge! :format_as_currency => true, :show_vat_text => Spree::Config[:show_price_inc_vat]

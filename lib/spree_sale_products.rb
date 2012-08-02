@@ -1,9 +1,8 @@
-require 'spree_core'
-require 'spree_sale_products_hooks'
-require 'float'
-
 module SpreeSaleProducts
   class Engine < Rails::Engine
+    require 'spree/core'
+    isolate_namespace Spree
+    engine_name 'spree_sale_products'
 
     config.autoload_paths += %W(#{config.root}/lib)
 
