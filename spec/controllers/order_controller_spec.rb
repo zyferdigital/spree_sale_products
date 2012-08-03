@@ -68,4 +68,40 @@ describe Spree::OrdersController do
   	end
   end
 
+  context "spree_volume_pricing" do
+    before do
+    	@sale_variant.price = 20.0
+    	@sale_variant.volume_prices.create! :amount => @sale_variant.price - 1.0, :range => '(5..10)'
+    	@sale_variant.volume_prices.create! :amount => @sale_variant.price - 5.0, :range => '(11..20)'
+    	@sale_variant.sale_price = @sale_variant.price - 3.0
+    	@sale_variant.save!
+    	@products.map &:reload
+    end
+
+    it "should use the sale price when not in volume price range" do
+      
+    end
+
+    it "should use the sale price when in a volume price range and still less than volume discount" do
+      
+    end
+
+    it "should not use the sale price when volume price is greater discount" do
+      
+    end
+
+    it "should properly toggle between difference price levels" do
+      # sale
+
+      # volume, but still sale
+
+      # volume
+
+      # sale
+
+      # no-sale
+
+      # volume
+    end
+  end
 end

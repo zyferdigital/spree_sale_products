@@ -11,6 +11,7 @@ group :test do
   end
 end
 
+gem 'spree_volume_pricing', :git => 'git://github.com/iloveitaly/spree_volume_pricing.git', :branch => 'line-item-override'
 gem 'spree', '~> 1.1.3'
 
 gemspec
