@@ -1,9 +1,8 @@
 Spree::Product.class_eval do
-  validates :reduction_percentage, :inclusion => { :in => 1..100, :message => I18n.t("value_between_1_and_100"), :allow_blank => true }
-  
-  def calculated_price
-    self.master.calculated_price
+  attr_accessible :sale_price
+  delegate_belongs_to :master, :sale_price
+
+  def on_sale?
+    self.variants_including_master.inject(false) { |f, v| f || v.on_sale? }
   end
 end
-
-
