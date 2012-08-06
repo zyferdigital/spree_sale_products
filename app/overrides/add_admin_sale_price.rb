@@ -1,6 +1,6 @@
 Deface::Override.new(
   :virtual_path => "spree/admin/products/_form",
-  :name => "add_variant_sale_price",
+  :name => "add_admin_sale_price",
   :insert_top => "[data-hook='admin_product_form_right'], #admin_product_form_right[data-hook]",
   :sequence => 10,
   :text => %q{

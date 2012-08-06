@@ -2,8 +2,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_sale_products'
   s.version     = '1.0.0'
-  s.summary     = 'Add gem summary here'
-  s.description = 'Add (optional) gem description here'
+  s.summary     = 'Adds a sale price field to Spree::Product'
+  s.description = 'Adds a sale price field to Spree::Product. Works with spree_volume_pricing'
   s.required_ruby_version = '>= 1.8.7'
 
   s.author            = 'Michael Bianco'

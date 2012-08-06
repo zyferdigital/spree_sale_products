@@ -8,7 +8,7 @@ would result in a **very large** number of promotions promotional actions, rules
 
 What is provided here is a very lightweight 'sale price' functionality, easily allowing you to set the sale price for items through the product / variant admin.
 
-This extension is compatible with spree_volume_pricing, the best price is chosen.
+This extension is compatible with spree_volume_pricing, the best price is chosen when both extensions are loaded.
 
 Installation
 ------------
