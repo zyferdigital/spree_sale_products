@@ -11,10 +11,12 @@ Spree::LineItem.class_eval do
 
     if self.variant.on_sale?
       sale_price = self.variant.sale_price
-
-      if (!new_price.nil? and sale_price <= new_price) or sale_price <= self.price
+      
+      if (new_price.present? and sale_price <= new_price) or sale_price <= self.price
         return self.price = sale_price
       end
+
+      return self.price = sale_price if new_price.blank?
     end
 
     if new_price.nil?

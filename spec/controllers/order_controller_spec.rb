@@ -13,9 +13,9 @@ describe Spree::OrdersController do
 		@sale_variant.sale_price = @sale_variant.price - 1.0
 		@sale_variant.save!
 
-		@user = FactoryGirl.create(:user)
+		@user = create(:user)
 		@user.stub :has_role? => true
-	  controller.stub :current_user => @user
+	  controller.stub :spree_current_user => @user
 
 	  @order = @user.orders.create
 	  controller.stub :current_order => @order
