@@ -24,6 +24,8 @@ end
 
 desc "Generates a dummy app for testing"
 task :test_app do
+  # need spree_auth_devise for test to pass
+  # https://github.com/spree/spree/issues/1862
   ENV['LIB_NAME'] = 'spree_sale_products'
-  Rake::Task['common:test_app'].invoke
+  Rake::Task['common:test_app'].invoke 'Spree::User'
 end

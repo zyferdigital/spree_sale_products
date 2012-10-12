@@ -1,6 +1,8 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 require 'rspec/rails'
+require 'ffaker'
+require 'shoulda-matchers'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -13,11 +15,8 @@ require 'spree/core/url_helpers'
 
 RSpec.configure do |config|
   config.mock_with :rspec
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.use_transactional_fixtures = true
-
+  config.use_transactional_fixtures = false
+  config.include FactoryGirl::Syntax::Methods
   config.include Spree::Core::TestingSupport::ControllerRequests
-  config.include Devise::TestHelpers, :type => :controller
+  config.include Spree::Core::UrlHelpers
 end
-
-# @configuration ||= AppConfiguration.find_or_create_by_name("Default configuration")
