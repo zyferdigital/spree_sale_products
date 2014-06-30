@@ -16,20 +16,20 @@ describe Spree::OrdersController do
 		@user = create(:user)
 		@user.stub :has_role? => true
 	  controller.stub :spree_current_user => @user
-
-	  @order = @user.orders.create
-	  controller.stub :current_order => @order
 	end
 
 	let(:products) { @products }
 	let(:sale_variant) { @sale_variant }
-	let(:order) { @order }
+	let(:order) { controller.current_order(create_order_if_necessary: true) }
 
 	describe "PUT #populate" do
 		it "should use the sale_price data when adding to cart" do
+      order # to call current_order with correct parameters
 			controller.current_order.line_items.length.should == 0
+
 		  submit_params = @products.inject({}) { |h, p| h.merge!({ "#{p.master.id}" => rand(9) + 1 })}
 		  spree_put :populate, :variants => submit_params
+
 		  response.code.should == "302" # cart redirect
 		  controller.current_order.line_items.count.should == 3
 		  controller.current_order.line_items.detect { |v| v.variant.id == @sale_variant.id }.price.to_f.should == @sale_variant.sale_price.to_f
@@ -72,8 +72,8 @@ describe Spree::OrdersController do
     before do
       @variant_cost = 20.0
     	@sale_variant.price = @variant_cost
-    	@sale_variant.volume_prices.create! :amount => @sale_variant.price - 1.0, :range => '(5..10)'
-    	@sale_variant.volume_prices.create! :amount => @sale_variant.price - 5.0, :range => '(11..20)'
+    	@sale_variant.volume_prices.create! :amount => @sale_variant.price - 1.0, :range => '(5..10)', :discount_type => 'price'
+    	@sale_variant.volume_prices.create! :amount => @sale_variant.price - 5.0, :range => '(11..20)', :discount_type => 'price'
     	@sale_variant.sale_price = @sale_variant.price - 3.0
     	@sale_variant.save!
     	@products.map &:reload
