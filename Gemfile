@@ -12,6 +12,5 @@ group :test do
   end
 end
 
-# gem 'spree_auth_devise', :git => 'git://github.com/spree/spree_auth_devise', :branch => '1-3-stable'
 gem 'spree_volume_pricing', :git => 'git://github.com/iloveitaly/spree_volume_pricing.git', :branch => '1-3-stable'
 gem 'spree', '~> 1.3.5'
