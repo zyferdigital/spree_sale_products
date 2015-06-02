@@ -12,5 +12,5 @@ group :test do
   end
 end
 
-gem 'spree_volume_pricing', :git => 'git://github.com/iloveitaly/spree_volume_pricing.git', :branch => '1-3-stable'
-gem 'spree', '~> 1.3.5'
+gem 'spree_volume_pricing', git: 'https://github.com/spree-contrib/spree_volume_pricing.git', :branch => '3-0-stable'
+gem 'spree', git: 'https://github.com/spree/spree.git', branch: '3-0-stable'
