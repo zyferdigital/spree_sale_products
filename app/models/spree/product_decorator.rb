@@ -5,4 +5,5 @@ Spree::Product.class_eval do
   def on_sale?
     self.variants_including_master.inject(false) { |f, v| f || v.on_sale? }
   end
+
 end
