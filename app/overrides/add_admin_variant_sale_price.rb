@@ -1,8 +1,10 @@
 Deface::Override.new(
   :virtual_path => "spree/admin/variants/_form",
   :name => "add_admin_variant_sale_price",
-  :insert_bottom => "div.right",
+  :insert_before => "[data-hook='price'],
   :text => %q{
-    <p data-hook="sale_price"><%= f.label :sale_price, t(:sale_price) %><br />
-    <%= f.text_field :sale_price %></p>
+  <div class="form-group" data-hook="sale_price">
+    <%= f.label :sale_price, Spree.t(:sale_price) %>
+    <%= f.text_field :sale_price, :value => number_to_currency(@variant.sale_price, :unit => ''), :class => 'form-control' %>
+  </div>
 })
